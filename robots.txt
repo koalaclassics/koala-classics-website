@@ -1,0 +1,42 @@
+# ============================================================
+# Koala Classics robots.txt
+# Search engine crawling and indexing rules
+# ============================================================
+
+# Allow all bots to crawl the site
+User-agent: *
+Allow: /
+
+# Disallow indexing of legal pages (optional)
+# Uncomment if you don't want legal pages in search results:
+# Disallow: /legal
+
+# Sitemap location (update with your actual domain)
+Sitemap: https://www.koalaclassics.com/sitemap.xml
+
+# Crawl delay (in seconds) - optional, limits bot requests
+# Crawl-delay: 1
+
+# ============================================================
+# Specific search engines
+# ============================================================
+
+# Google-specific crawling rules (optional)
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Bing-specific crawling rules (optional)
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Block bad bots
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /

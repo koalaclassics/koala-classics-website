@@ -1,0 +1,1748 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  KOALA CLASSICS — index.html (Consolidated & Mobile-First)
+  ============================================================
+  A professional, mobile-optimized website for an Australian
+  car export business. Combines homepage + cost estimator.
+  Ready to deploy to Netlify or any host.
+
+  DEPLOYMENT NOTES:
+  - For Netlify: form submissions auto-captured via data-netlify
+  - Set notification email in Netlify Site Settings > Forms
+  - For other hosts: replace Netlify form with your backend endpoint
+  - All assets (fonts, CSS) are inlined or from CDN — no external deps
+
+  CUSTOMIZATION:
+  - Edit text between tags (keep HTML structure intact)
+  - Colors/fonts set in :root CSS variables
+  - To add cars: copy one <article class="car"> block
+  - Mobile nav menu uses vanilla JS (no jQuery needed)
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Koala Classics — Australian Classic Cars, Exported to the USA</title>
+<meta name="description" content="Koala Classics finds, verifies, and exports 25+ year-old Australian classic cars to the USA under the 25-year import rule. Transparent pricing, fully protected transactions." />
+<meta property="og:title" content="Koala Classics — Australian Classic Cars, Exported to the USA" />
+<meta property="og:description" content="Rare Australian muscle, legally imported to the United States under the 25-year rule. Sourcing, inspection, and export — handled." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.koalaclassics.com" />
+<meta name="theme-color" content="#14342B" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --ink:#14342B;
+    --ink-2:#0E2620;
+    --paper:#F3EEE3;
+    --paper-2:#E8E0D0;
+    --gold:#B8860B;
+    --gold-bright:#D4AF37;
+    --text-light:#FFFFFF;
+    --text-muted:#999999;
+    --sage:#7C8B79;
+    --char:#1C1C18;
+    --line:rgba(28,28,24,.14);
+    --maxw:1120px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Roboto",system-ui,sans-serif;
+    color:var(--char);
+    background:var(--paper);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    font-weight:400;
+    font-size:1rem;
+  }
+  .wrap{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 24px;
+    width:100%;
+    box-sizing:border-box;
+  }
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block;height:auto}
+
+  .eyebrow{
+    font-family:"Roboto",sans-serif;
+    font-size:.85rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:700;
+  }
+  h1{
+    font-size:clamp(2rem,7vw,5rem);
+    font-weight:400;
+    line-height:1.1;
+    letter-spacing:.01em;
+  }
+  h2{
+    font-size:clamp(1.5rem,4vw,2.4rem);
+    font-weight:400;
+    line-height:1.15;
+    letter-spacing:.01em;
+  }
+  h3{
+    font-size:clamp(1.1rem,3vw,1.5rem);
+    font-weight:500;
+    line-height:1.2;
+    letter-spacing:.005em;
+  }
+  h1,h2,h3{
+    font-family:"Roboto",sans-serif;
+    text-transform:uppercase;
+    margin-bottom:0;
+  }
+
+  /* ========== HEADER ========== */
+  header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:var(--ink);
+    border-bottom:1px solid rgba(243,238,227,.12);
+  }
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height:68px;
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 24px;
+    width:100%;
+    box-sizing:border-box;
+  }
+  .brand{
+    font-family:"Roboto",sans-serif;
+    color:var(--text-light);
+    font-size:1.35rem;
+    letter-spacing:.04em;
+  }
+  .brand span{color:var(--gold)}
+  .nav-links{
+    display:flex;
+    gap:30px;
+    align-items:center;
+  }
+  .nav-links a{
+    color:var(--text-light);
+    font-size:.84rem;
+    font-weight:500;
+    letter-spacing:.02em;
+    opacity:.85;
+  }
+  .nav-links a:hover{
+    opacity:1;
+    color:var(--gold-bright);
+  }
+  .nav-cta{
+    background:var(--gold);
+    color:var(--ink-2)!important;
+    padding:9px 18px;
+    border-radius:2px;
+    font-weight:700;
+    opacity:1!important;
+    border:0;
+    cursor:pointer;
+  }
+  .nav-cta:hover{background:var(--gold-bright)}
+  .menu-btn{
+    display:none;
+    background:none;
+    border:1px solid rgba(255,255,255,.3);
+    color:var(--text-light);
+    padding:8px 12px;
+    border-radius:2px;
+    font-family:"Roboto",sans-serif;
+    cursor:pointer;
+    font-size:.85rem;
+    font-weight:600;
+  }
+  .menu-btn:hover{
+    border-color:var(--gold-bright);
+    color:var(--gold-bright);
+  }
+
+  /* ========== HERO ========== */
+  .hero{
+    background:var(--ink);
+    color:var(--paper);
+    padding:clamp(48px,10vw,84px) 0 clamp(48px,12vw,96px);
+    position:relative;
+    overflow:hidden;
+  }
+  .hero .wrap{
+    text-align:center;
+  }
+  .hero:after{
+    content:"";
+    position:absolute;
+    right:-120px;
+    bottom:-120px;
+    width:420px;
+    height:420px;
+    border:1px solid rgba(200,146,47,.25);
+    border-radius:50%;
+    pointer-events:none;
+  }
+  .hero:before{
+    content:"";
+    position:absolute;
+    right:-40px;
+    bottom:-40px;
+    width:280px;
+    height:280px;
+    border:1px solid rgba(200,146,47,.18);
+    border-radius:50%;
+    pointer-events:none;
+  }
+  .hero .eyebrow{margin-bottom:12px;color:var(--text-light)}
+  .hero h1{
+    max-width:14ch;
+    color:var(--text-light);
+    margin:0 auto;
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:var(--gold-bright);
+  }
+  .hero p.lede{
+    margin-top:20px;
+    margin-left:auto;
+    margin-right:auto;
+    max-width:54ch;
+    font-size:1.12rem;
+    color:rgba(255,255,255,.86);
+    line-height:1.65;
+  }
+  .hero-cta{
+    display:flex;
+    gap:14px;
+    margin-top:34px;
+    margin-left:auto;
+    margin-right:auto;
+    flex-wrap:wrap;
+    justify-content:center;
+    width:fit-content;
+  }
+  .btn{
+    display:inline-block;
+    padding:14px 28px;
+    border-radius:2px;
+    font-weight:600;
+    font-size:.95rem;
+    letter-spacing:.01em;
+    transition:.15s ease;
+    cursor:pointer;
+    border:0;
+    font-family:"Roboto",system-ui,sans-serif;
+  }
+  .btn-gold{
+    background:var(--gold);
+    color:var(--ink-2);
+  }
+  .btn-gold:hover{
+    background:var(--gold-bright);
+    transform:translateY(-1px);
+  }
+  .btn-ghost{
+    border:1px solid rgba(255,255,255,.4);
+    color:var(--text-light);
+    background:transparent;
+  }
+  .btn-ghost:hover{
+    border-color:var(--gold-bright);
+    color:var(--gold-bright);
+  }
+  .hero-trust{
+    margin-top:40px;
+    margin-left:auto;
+    margin-right:auto;
+    font-family:"Roboto",sans-serif;
+    font-size:.85rem;
+    letter-spacing:.08em;
+    color:rgba(255,255,255,.6);
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+    justify-content:center;
+    width:fit-content;
+  }
+  .hero-trust span{
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .hero-trust span:before{
+    content:"";
+    width:6px;
+    height:6px;
+    background:var(--gold);
+    border-radius:50%;
+    flex-shrink:0;
+  }
+
+  /* ========== ELIGIBILITY STRIP ========== */
+  .eligible{
+    background:var(--gold);
+    color:var(--ink-2);
+  }
+  .eligible .wrap{
+    display:flex;
+    align-items:center;
+    gap:28px;
+    padding:26px 24px;
+    flex-wrap:wrap;
+    justify-content:center;
+    max-width:var(--maxw);
+    margin:0 auto;
+    width:100%;
+    box-sizing:border-box;
+  }
+  .elig-year{
+    font-family:"Roboto",sans-serif;
+    font-size:clamp(2.4rem,6vw,3.6rem);
+    line-height:.9;
+    font-weight:400;
+  }
+  .elig-copy{
+    font-family:"Roboto",sans-serif;
+    font-size:.95rem;
+    font-weight:700;
+    letter-spacing:.02em;
+    max-width:46ch;
+  }
+  .elig-copy b{
+    background:var(--ink-2);
+    color:var(--gold);
+    padding:1px 7px;
+  }
+
+  /* ========== GENERIC SECTION ========== */
+  section{
+    padding:clamp(32px,8vw,64px) 0;
+  }
+  .sec-head{
+    max-width:70ch;
+    margin-bottom:clamp(32px,8vw,48px);
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .sec-head .eyebrow{
+    margin-bottom:16px;
+    display:block;
+  }
+  .sec-head h2{
+    font-size:clamp(1.5rem,4vw,2.4rem);
+    margin-top:0;
+    color:var(--ink);
+    margin-bottom:16px;
+  }
+  .sec-head p{
+    margin-top:0;
+    color:#534e43;
+    font-size:1.05rem;
+    line-height:1.65;
+    font-weight:400;
+  }
+
+  /* ========== HOW IT WORKS ========== */
+  .steps{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:2px;
+    background:var(--line);
+    border:1px solid var(--line);
+    width:100%;
+    margin:0 auto;
+  }
+  .step{
+    background:var(--paper);
+    padding:30px 26px;
+  }
+  .step .num{
+    font-family:"Roboto",sans-serif;
+    font-weight:700;
+    color:var(--gold);
+    font-size:.85rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+  }
+  .step h3{
+    margin:12px 0 10px;
+    color:var(--ink);
+    letter-spacing:0;
+    line-height:1.15;
+    font-size:1.05rem;
+    font-weight:500;
+  }
+  .step p{
+    font-size:.92rem;
+    color:#534e43;
+    line-height:1.6;
+    font-weight:400;
+    margin:0;
+  }
+
+  /* ========== CARS ========== */
+  .cars-sec{
+    background:var(--ink-2);
+    color:var(--paper);
+  }
+  .cars-sec .sec-head h2{color:var(--text-light)}
+  .cars-sec .sec-head p{color:rgba(255,255,255,.78)}
+  .cars-sec .eyebrow{color:var(--text-light)}
+  .cars{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+    width:100%;
+    margin:0 auto;
+  }
+  .car{
+    border:1px solid rgba(243,238,227,.16);
+    padding:26px;
+    border-radius:3px;
+    background:rgba(243,238,227,.03);
+    transition:.18s;
+  }
+  .car:hover{
+    border-color:var(--gold);
+    background:rgba(200,146,47,.07);
+  }
+  .car .era{
+    font-family:"Roboto",sans-serif;
+    font-size:.85rem;
+    letter-spacing:.12em;
+    color:var(--text-light);
+    text-transform:uppercase;
+  }
+  .car h3{
+    margin:10px 0 12px;
+    color:var(--text-light);
+    letter-spacing:0;
+    font-size:1.1rem;
+    font-weight:500;
+    line-height:1.2;
+  }
+  .car p{
+    font-size:.93rem;
+    color:rgba(255,255,255,.78);
+    line-height:1.6;
+    font-weight:400;
+    margin:0;
+  }
+  .cars-note{
+    margin-top:30px;
+    font-family:"Roboto",sans-serif;
+    font-size:.85rem;
+    color:rgba(255,255,255,.6);
+  }
+
+  /* ========== ADVANTAGES ========== */
+  .adv{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:34px;
+    width:100%;
+    margin:0 auto;
+  }
+  .adv-item{
+    border-top:2px solid var(--gold);
+    padding-top:18px;
+  }
+  .adv-item h3{
+    color:var(--ink);
+    letter-spacing:0;
+    line-height:1.2;
+    margin-bottom:10px;
+    font-size:1.05rem;
+    font-weight:500;
+  }
+  .adv-item p{
+    font-size:.94rem;
+    color:#534e43;
+    line-height:1.6;
+    font-weight:400;
+    margin:0;
+  }
+
+  /* ========== COST ESTIMATOR SECTION ========== */
+  .estimator-sec{
+    background:var(--paper-2);
+  }
+  .estimator-wrap{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:48px;
+    width:100%;
+    margin:0 auto;
+  }
+
+  .estimator-inputs{
+    display:flex;
+    flex-direction:column;
+    gap:32px;
+  }
+
+  .control-group{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .control-label{
+    font-weight:600;
+    font-size:.85rem;
+    color:var(--ink);
+    text-transform:uppercase;
+    font-family:"Roboto",sans-serif;
+    letter-spacing:.08em;
+  }
+
+  .category-buttons{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+  .category-btn{
+    padding:14px 16px;
+    border:2px solid var(--line);
+    background:var(--paper);
+    color:var(--char);
+    border-radius:3px;
+    cursor:pointer;
+    font-weight:600;
+    font-size:.9rem;
+    text-align:left;
+    transition:.2s;
+  }
+  .category-btn:hover{
+    border-color:var(--gold);
+    background:rgba(200,146,47,.05);
+  }
+  .category-btn.active{
+    background:var(--gold);
+    color:var(--ink-2);
+    border-color:var(--gold);
+  }
+  .category-name{
+    display:block;
+    font-weight:700;
+    font-size:.95rem;
+    margin-bottom:4px;
+  }
+  .category-range{
+    display:block;
+    font-family:"Roboto",sans-serif;
+    font-size:.85rem;
+    opacity:.7;
+  }
+
+  .price-inputs{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+  .slider-wrap{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  input[type="range"]{
+    width:100%;
+    height:6px;
+    border-radius:3px;
+    background:var(--line);
+    outline:none;
+    -webkit-appearance:none;
+  }
+  input[type="range"]::-webkit-slider-thumb{
+    -webkit-appearance:none;
+    appearance:none;
+    width:20px;
+    height:20px;
+    border-radius:50%;
+    background:var(--gold);
+    cursor:pointer;
+    box-shadow:0 2px 4px rgba(0,0,0,.15);
+  }
+  input[type="range"]::-moz-range-thumb{
+    width:20px;
+    height:20px;
+    border-radius:50%;
+    background:var(--gold);
+    cursor:pointer;
+    border:0;
+    box-shadow:0 2px 4px rgba(0,0,0,.15);
+  }
+  input[type="range"]:hover::-webkit-slider-thumb{
+    background:var(--gold-bright);
+  }
+  input[type="range"]:hover::-moz-range-thumb{
+    background:var(--gold-bright);
+  }
+
+  .text-input-wrap{
+    display:flex;
+    gap:8px;
+    align-items:center;
+  }
+  .currency-symbol{
+    font-family:"Roboto",sans-serif;
+    font-weight:700;
+    color:var(--gold);
+    font-size:1.1rem;
+  }
+  input[type="number"]{
+    flex:1;
+    padding:12px 14px;
+    border:2px solid var(--line);
+    border-radius:3px;
+    font-size:1rem;
+    font-family:inherit;
+    color:var(--char);
+  }
+  input[type="number"]:focus{
+    outline:2px solid var(--gold);
+    outline-offset:1px;
+    border-color:transparent;
+  }
+
+  .quick-examples{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .quick-label{
+    font-size:.8rem;
+    color:#6b6557;
+    text-transform:uppercase;
+    font-weight:600;
+    letter-spacing:.06em;
+  }
+  .example-buttons{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:8px;
+  }
+  .example-btn{
+    padding:10px 14px;
+    background:rgba(200,146,47,.1);
+    border:1px solid rgba(200,146,47,.3);
+    border-radius:3px;
+    cursor:pointer;
+    font-size:.88rem;
+    text-align:left;
+    transition:.15s;
+    color:var(--char);
+  }
+  .example-btn:hover{
+    background:rgba(200,146,47,.2);
+    border-color:var(--gold);
+  }
+  .example-name{
+    font-weight:700;
+    display:block;
+  }
+  .example-price{
+    font-family:"Roboto",sans-serif;
+    font-size:.85rem;
+    opacity:.7;
+  }
+
+  .estimator-output{
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+  }
+
+  .breakdown-card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:24px;
+  }
+
+  .breakdown-title{
+    font-family:"Roboto",sans-serif;
+    font-size:1.1rem;
+    color:var(--ink);
+    text-transform:uppercase;
+    margin-bottom:20px;
+    font-weight:400;
+  }
+
+  .cost-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    padding:12px 0;
+    border-bottom:1px solid var(--line);
+    gap:16px;
+  }
+  .cost-row:last-child{
+    border-bottom:0;
+  }
+
+  .cost-label{
+    display:flex;
+    align-items:flex-start;
+    gap:8px;
+    flex:1;
+  }
+  .label-text{
+    font-size:.95rem;
+    color:var(--char);
+  }
+  .label-detail{
+    font-family:"Roboto",sans-serif;
+    font-size:.85rem;
+    color:#6b6557;
+    display:block;
+    margin-top:2px;
+  }
+  .info-icon{
+    width:18px;
+    height:18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--gold);
+    color:var(--ink-2);
+    border-radius:50%;
+    font-size:.75rem;
+    font-weight:700;
+    flex-shrink:0;
+    cursor:pointer;
+    position:relative;
+  }
+
+  .tooltip{
+    display:none;
+    position:absolute;
+    bottom:100%;
+    left:0;
+    background:var(--ink-2);
+    color:var(--paper);
+    padding:8px 12px;
+    border-radius:3px;
+    font-size:.75rem;
+    white-space:nowrap;
+    z-index:100;
+    margin-bottom:8px;
+    line-height:1.4;
+  }
+  .info-icon:hover .tooltip{
+    display:block;
+  }
+
+  .cost-amount{
+    text-align:right;
+    font-weight:600;
+    font-family:"Roboto",sans-serif;
+    min-width:120px;
+    color:var(--char);
+  }
+  .cost-amount.fixed::after{
+    content:" (fixed)";
+    font-size:.7rem;
+    color:#6b6557;
+    font-weight:400;
+  }
+  .cost-amount.variable::after{
+    content:" (est.)";
+    font-size:.7rem;
+    color:#6b6557;
+    font-weight:400;
+  }
+
+  .cost-row.total{
+    border-top:2px solid var(--gold);
+    padding-top:16px;
+    padding-bottom:0;
+    margin-top:8px;
+  }
+  .cost-row.total .label-text{
+    font-family:"Roboto",sans-serif;
+    font-size:1.1rem;
+    text-transform:uppercase;
+    color:var(--ink);
+  }
+  .cost-row.total .cost-amount{
+    font-size:1.4rem;
+    color:var(--gold);
+  }
+
+  .escrow-message{
+    background:rgba(124,139,121,.08);
+    border-left:4px solid var(--sage);
+    padding:16px;
+    border-radius:3px;
+    font-size:.95rem;
+    color:var(--char);
+    line-height:1.6;
+  }
+  .escrow-badge{
+    display:inline-block;
+    background:var(--sage);
+    color:var(--paper);
+    padding:4px 10px;
+    border-radius:2px;
+    font-size:.75rem;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    margin-bottom:8px;
+  }
+  .escrow-message p{
+    margin:8px 0;
+  }
+  .escrow-message strong{
+    font-weight:600;
+    color:var(--ink);
+  }
+
+  .action-buttons{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+  }
+  .btn-secondary{
+    background:rgba(20,52,43,.1);
+    color:var(--ink);
+    border:1px solid var(--line);
+  }
+  .btn-secondary:hover{
+    background:rgba(20,52,43,.15);
+    border-color:var(--gold);
+  }
+
+  .disclaimer{
+    background:var(--paper);
+    border:1px solid var(--line);
+    padding:16px;
+    border-radius:3px;
+    font-size:.85rem;
+    color:#6b6557;
+    line-height:1.6;
+  }
+  .disclaimer strong{
+    color:var(--char);
+  }
+
+  /* ========== FOUNDER ========== */
+  .founder{background:var(--paper-2)}
+  .founder .wrap{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:24px;
+    max-width:760px;
+    margin:0 auto;
+    width:100%;
+    box-sizing:border-box;
+    padding:0 24px;
+  }
+  .founder .eyebrow{color:#9a7320}
+  .founder h2{
+    color:var(--ink);
+    margin-top:0;
+  }
+  .founder p{
+    font-size:1.05rem;
+    color:#433f36;
+    line-height:1.65;
+    font-weight:400;
+    margin-bottom:16px;
+  }
+  .founder p:last-of-type{
+    margin-bottom:0;
+  }
+  .founder .sig{
+    font-family:"Roboto",sans-serif;
+    font-weight:700;
+    color:var(--ink);
+    letter-spacing:.04em;
+  }
+
+  /* ========== FAQ ========== */
+  .faq-container{
+    max-width:760px;
+    margin:0 auto;
+    width:100%;
+    box-sizing:border-box;
+  }
+  details{
+    border-bottom:1px solid var(--line);
+    padding:20px 0;
+  }
+  summary{
+    font-weight:600;
+    font-size:1.05rem;
+    cursor:pointer;
+    list-style:none;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    color:var(--ink);
+  }
+  summary::-webkit-details-marker{display:none}
+  summary:after{
+    content:"+";
+    font-family:"Roboto",sans-serif;
+    color:var(--gold);
+    font-size:1.3rem;
+    transition:.2s;
+  }
+  details[open] summary:after{transform:rotate(45deg)}
+  details p{
+    margin-top:14px;
+    color:#534e43;
+    max-width:70ch;
+    line-height:1.65;
+  }
+
+  /* ========== QUOTE FORM ========== */
+  .quote{
+    background:var(--ink);
+    color:var(--paper);
+  }
+  .quote .sec-head h2{color:var(--text-light)}
+  .quote .sec-head p{color:rgba(255,255,255,.82)}
+  .quote .eyebrow{color:var(--text-light)}
+  form{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+    max-width:760px;
+    margin:0 auto;
+    width:100%;
+    box-sizing:border-box;
+    padding:0;
+  }
+  .field{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .field.full{grid-column:1/-1}
+  label{
+    font-family:"Roboto",sans-serif;
+    font-size:.85rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:rgba(255,255,255,.7);
+  }
+  input,textarea{
+    background:rgba(243,238,227,.06);
+    border:1px solid rgba(243,238,227,.22);
+    color:var(--paper);
+    padding:13px 14px;
+    border-radius:2px;
+    font-family:inherit;
+    font-size:.98rem;
+  }
+  input::placeholder,textarea::placeholder{
+    color:rgba(255,255,255,.4);
+  }
+  input:focus,textarea:focus{
+    outline:2px solid var(--gold);
+    outline-offset:1px;
+    border-color:transparent;
+  }
+  textarea{
+    resize:vertical;
+    min-height:110px;
+  }
+  .form-foot{
+    grid-column:1/-1;
+    display:flex;
+    align-items:center;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-top:6px;
+  }
+  .form-foot .btn-gold{padding:15px 34px}
+  .form-foot small{
+    font-family:"Roboto",sans-serif;
+    font-size:.85rem;
+    color:rgba(255,255,255,.6);
+    max-width:40ch;
+  }
+  .hp{position:absolute;left:-9999px}
+  .consent{
+    grid-column:1/-1;
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+    font-size:.86rem;
+    color:rgba(255,255,255,.82);
+    line-height:1.5;
+    cursor:pointer;
+  }
+  .consent input{
+    width:18px;
+    height:18px;
+    flex:0 0 18px;
+    margin-top:3px;
+    accent-color:var(--gold);
+    cursor:pointer;
+  }
+  .consent a{
+    color:var(--gold-bright);
+    text-decoration:underline;
+  }
+  .consent a:hover{color:var(--paper)}
+  .form-status{
+    grid-column:1/-1;
+    padding:12px 14px;
+    border-radius:2px;
+    font-size:.9rem;
+    display:none;
+  }
+  .form-status.success{
+    background:rgba(124,139,121,.15);
+    color:var(--sage);
+  }
+  .form-status.error{
+    background:rgba(200,146,47,.15);
+    color:var(--gold-bright);
+  }
+
+  /* ========== FOOTER ========== */
+  footer{
+    background:var(--ink-2);
+    color:rgba(255,255,255,.7);
+    padding:48px 0;
+    font-size:.86rem;
+  }
+  footer .wrap{
+    display:flex;
+    justify-content:space-between;
+    gap:24px;
+    flex-wrap:wrap;
+    max-width:var(--maxw);
+    margin:0 auto;
+    width:100%;
+    box-sizing:border-box;
+    padding:0 24px;
+  }
+  footer .brand{
+    font-size:1.1rem;
+    margin-bottom:10px;
+  }
+  footer a:hover{color:var(--gold-bright)}
+  .foot-legal{
+    font-family:"Roboto",sans-serif;
+    font-size:.85rem;
+    letter-spacing:.06em;
+    line-height:1.9;
+  }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width:900px){
+    .estimator-wrap{
+      grid-template-columns:1fr;
+      gap:40px;
+    }
+    .action-buttons{
+      grid-template-columns:1fr;
+    }
+    .category-buttons{
+      grid-template-columns:1fr;
+    }
+  }
+  @media (max-width:780px){
+    .nav-links{display:none}
+    .nav-links.open{
+      display:flex;
+      position:absolute;
+      top:68px;
+      left:0;
+      right:0;
+      background:var(--ink);
+      flex-direction:column;
+      gap:0;
+      padding:8px 24px 20px;
+      border-bottom:1px solid rgba(243,238,227,.12);
+    }
+    .nav-links.open a{
+      padding:12px 0;
+      width:100%;
+      border-bottom:1px solid rgba(243,238,227,.08);
+    }
+    .menu-btn{display:block}
+    form{grid-template-columns:1fr}
+    section{padding:clamp(32px,6vw,48px) 0}
+    .hero{padding:clamp(40px,8vw,56px) 0 clamp(40px,10vw,64px)}
+    .hero:before,.hero:after{display:none}
+    .estimator-wrap{
+      gap:32px;
+      padding:clamp(32px,6vw,48px) 0;
+    }
+    .wrap{padding:0 20px}
+    .nav{padding:0 20px}
+    footer .wrap{padding:0 20px}
+    .eligible .wrap{padding:20px}
+    .founder .wrap{padding:0 20px}
+  }
+  @media (max-width:640px){
+    .wrap{padding:0 16px}
+    .nav{padding:0 16px}
+    footer .wrap{padding:0 16px}
+    .eligible .wrap{padding:16px}
+    .founder .wrap{padding:0 16px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{scroll-behavior:auto;transition:none!important}
+  }
+</style>
+</head>
+<body>
+
+<!-- ========== HEADER ========== -->
+<header role="banner">
+  <div class="wrap nav">
+    <a href="#top" class="brand">KOALA<span>·</span>CLASSICS</a>
+    <nav class="nav-links" id="navlinks" role="navigation">
+      <a href="#how">How it works</a>
+      <a href="#cars">The cars</a>
+      <a href="#why">Why us</a>
+      <a href="#estimator">Cost estimator</a>
+      <a href="#faq">FAQ</a>
+      <a href="#quote" class="nav-cta">Get a quote</a>
+    </nav>
+    <button class="menu-btn" id="menubtn" aria-label="Open menu" aria-controls="navlinks" aria-expanded="false">MENU</button>
+  </div>
+</header>
+
+<!-- ========== HERO ========== -->
+<section class="hero" id="top" role="main">
+  <div class="wrap">
+    <p class="eyebrow">Australia &nbsp;&rarr;&nbsp; U.S.A &nbsp;·&nbsp; The 25-Year Rule</p>
+    <h1>Bring Home an Aussie Legend
+    </div>/h1>
+    <p class="lede">Koala Classics finds, verifies, and exports 25-plus-year-old Holdens, Fords, and HSVs from Australia straight to your driveway in the States — fully compliant with your payment protected.</p>
+    <div class="hero-cta">
+      <a href="#quote" class="btn btn-gold">Get a free quote</a>
+      <a href="#how" class="btn btn-ghost">See how it works</a>
+    </div>
+    <div class="hero-trust">
+      <span>Brisbane, Australia</span>
+      <span>ABN 29&nbsp;820&nbsp;791&nbsp;391</span>
+      <span>Fully protected transactions</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ELIGIBILITY STRIP ========== -->
+<div class="eligible" role="contentinfo">
+  <div class="wrap">
+    <div class="elig-year" id="eligYear">2026</div>
+    <p class="elig-copy">Under the U.S. 25-year rule, any vehicle built in <b id="eligModelYear">2001</b> or earlier is eligible to import right now — exempt from federal safety and emissions standards. Every year, a new wave of icons crosses the line.</p>
+  </div>
+</div>
+
+<!-- ========== HOW IT WORKS ========== -->
+<section id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">The Process</p>
+      <h2>From "I want one" to in your garage</h2>
+      <p>Seven clear steps. You stay in control of the money and the decision the whole way through — we handle the hard part across the Pacific.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="num">STEP 01</div><h3>Tell us what you want</h3><p>The car, the era, the budget. We listen first.</p></div>
+      <div class="step"><div class="num">STEP 02</div><h3>We source options</h3><p>We search auctions, dealers, and private sellers across Australia to find the right vehicle.</p></div>
+      <div class="step"><div class="num">STEP 03</div><h3>Connect with the seller</h3><p>You negotiate directly with the seller. No hidden markup or middleman fees.</p></div>
+      <div class="step"><div class="num">STEP 04</div><h3>Independent inspection</h3><p>An independent third party inspects the car before you commit. You see the full report and decide.</p></div>
+      <div class="step"><div class="num">STEP 05</div><h3>Secure payment process</h3><p>Payment is held safely until you verify the vehicle has arrived in good condition.</p></div>
+      <div class="step"><div class="num">STEP 06</div><h3>Export &amp; shipping</h3><p>We coordinate de-registration, freight, and loading the car onto the vessel in Australia.</p></div>
+      <div class="step"><div class="num">STEP 07</div><h3>Lands in the USA</h3><p>We guide you through the customs paperwork — EPA 3520-1 and DOT HS-7 — so nothing gets held at the port.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== THE CARS ========== -->
+<section class="cars-sec" id="cars">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Eligible Now</p>
+      <h2>The cars America has been waiting 25 years for</h2>
+      <p>Australia built muscle the U.S. market never saw. These are the icons that are eligible — or crossing the line as we speak.</p>
+    </div>
+    <div class="cars">
+      <article class="car">
+        <div class="era">1986 – 1997</div>
+        <h3>Holden Commodore</h3>
+        <p>From the RB30-turbo Group A heroes through to the 5.0-litre VS SS — the cult Aussie sedan, eligible across the VL to VS range.</p>
+      </article>
+      <article class="car">
+        <div class="era">1991 – 2001</div>
+        <h3>Ford Falcon XR6 &amp; XR8</h3>
+        <p>Australia's home-grown muscle sedan. The EB through AU XR8 brings V8 attitude in a body the States never got.</p>
+      </article>
+      <article class="car">
+        <div class="era">1968 – 2001</div>
+        <h3>Holden Monaro</h3>
+        <p>From the legendary '68 GTS coupe to the reborn V2 — one of the most collectible badges Australia ever wore.</p>
+      </article>
+      <article class="car">
+        <div class="era">A Uniquely Aussie Thing</div>
+        <h3>The Falcon &amp; Holden Ute</h3>
+        <p>A two-seat coupe-utility with a V8. There is genuinely nothing like it in the American market — and collectors know it.</p>
+      </article>
+      <article class="car">
+        <div class="era">1974 – 1979</div>
+        <h3>Holden Torana</h3>
+        <p>The LH / LX and the fabled A9X. Small, light, and ferocious — blue-chip Australian motorsport royalty.</p>
+      </article>
+      <article class="car">
+        <div class="era">Factory Hot</div>
+        <h3>HSV &amp; FPV</h3>
+        <p>The factory-tuned Holdens and Fords for collectors chasing the rare badge, the low build number, the right options.</p>
+      </article>
+    </div>
+    <p class="cars-note">Chasing something specific? Tell us the car — sourcing rare and one-owner examples is what we do.</p>
+  </div>
+</section>
+
+<!-- ========== WHY US ========== -->
+<section id="why">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">The Koala Classics Advantage</p>
+      <h2>Why buyers trust us with the distance</h2>
+    </div>
+    <div class="adv">
+      <div class="adv-item"><h3>Fully protected transactions</h3><p>Your payment is held safely and released only after you verify the vehicle. You stay in complete control — Koala Classics never touches your money.</p></div>
+      <div class="adv-item"><h3>Verified before you commit</h3><p>Independent third-party inspections mean you know exactly what you're buying before a single dollar leaves your account.</p></div>
+      <div class="adv-item"><h3>On-the-ground in Australia</h3><p>We're based in Brisbane, in the thick of the Australian car scene. Real market knowledge, real local contacts.</p></div>
+      <div class="adv-item"><h3>Total transparency</h3><p>A clear, step-by-step process where you stay in control of the transaction from first call to delivery.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== COST ESTIMATOR ========== -->
+<section class="estimator-sec" id="estimator">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Know Before You Buy</p>
+      <h2>Calculate your total cost</h2>
+      <p>Get a transparent breakdown of all costs — vehicle price, fees, duties, shipping — to understand your true landed cost.</p>
+    </div>
+
+    <div class="estimator-wrap">
+
+      <!-- LEFT: INPUTS -->
+      <div class="estimator-inputs">
+
+        <!-- Vehicle Category Selection -->
+        <div class="control-group">
+          <label class="control-label">Select Vehicle Category</label>
+          <div class="category-buttons" id="categoryButtons">
+            <button class="category-btn active" data-category="commodore" data-min="12000" data-max="30000">
+              <span class="category-name">Holden Commodore</span>
+              <span class="category-range">$12K–$30K</span>
+            </button>
+            <button class="category-btn" data-category="falcon" data-min="15000" data-max="35000">
+              <span class="category-name">Ford Falcon XR</span>
+              <span class="category-range">$15K–$35K</span>
+            </button>
+            <button class="category-btn" data-category="monaro" data-min="20000" data-max="40000">
+              <span class="category-name">Holden Monaro</span>
+              <span class="category-range">$20K–$40K</span>
+            </button>
+            <button class="category-btn" data-category="torana" data-min="35000" data-max="70000">
+              <span class="category-name">Holden Torana</span>
+              <span class="category-range">$35K–$70K</span>
+            </button>
+            <button class="category-btn" data-category="gto" data-min="40000" data-max="80000">
+              <span class="category-name">Ford GTO</span>
+              <span class="category-range">$40K–$80K</span>
+            </button>
+            <button class="category-btn" data-category="hsv" data-min="25000" data-max="65000">
+              <span class="category-name">HSV / FPV</span>
+              <span class="category-range">$25K–$65K</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Price Input -->
+        <div class="control-group">
+          <label class="control-label">Vehicle Purchase Price</label>
+          <div class="price-inputs">
+            <div class="slider-wrap">
+              <input type="range" id="priceSlider" min="5000" max="100000" value="25000" step="1000" />
+            </div>
+            <div class="text-input-wrap">
+              <span class="currency-symbol">$</span>
+              <input type="number" id="priceInput" min="5000" max="100000" value="25000" step="1000" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Examples -->
+        <div class="control-group">
+          <label class="control-label">Quick Examples</label>
+          <div class="example-buttons">
+            <button class="example-btn" data-price="20000" data-category="commodore">
+              <span class="example-name">Budget Commodore</span>
+              <span class="example-price">$20,000</span>
+            </button>
+            <button class="example-btn" data-price="30000" data-category="falcon">
+              <span class="example-name">Mid-Range Falcon</span>
+              <span class="example-price">$30,000</span>
+            </button>
+            <button class="example-btn" data-price="55000" data-category="torana">
+              <span class="example-name">Collector Torana</span>
+              <span class="example-price">$55,000</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: BREAKDOWN -->
+      <div class="estimator-output">
+
+        <!-- Cost Breakdown Card -->
+        <div class="breakdown-card">
+          <h2 class="breakdown-title">Cost Breakdown</h2>
+
+          <div class="cost-row">
+            <div class="cost-label">
+              <span class="label-text">Vehicle purchase price</span>
+            </div>
+            <div class="cost-amount" id="vehiclePrice">$25,000</div>
+          </div>
+
+          <div class="cost-row">
+            <div class="cost-label">
+              <div class="info-icon">
+                ?
+                <span class="tooltip">Professional sourcing, market research & coordination</span>
+              </div>
+              <span class="label-text">Koala Classics sourcing fee</span>
+            </div>
+            <div class="cost-amount fixed">$2,300</div>
+          </div>
+
+          <div class="cost-row">
+            <div class="cost-label">
+              <div class="info-icon">
+                ?
+                <span class="tooltip">Independent inspection report before purchase</span>
+              </div>
+              <span class="label-text">Independent inspection</span>
+            </div>
+            <div class="cost-amount fixed">$400</div>
+          </div>
+
+          <div class="cost-row">
+            <div class="cost-label">
+              <div class="info-icon">
+                ?
+                <span class="tooltip">Funds held safely until you verify vehicle condition</span>
+              </div>
+              <span class="label-text">Payment protection</span>
+              <span class="label-detail" id="escrowDetail">1% of vehicle price ($250–$400)</span>
+            </div>
+            <div class="cost-amount variable" id="escrowCost">$250</div>
+          </div>
+
+          <div class="cost-row">
+            <div class="cost-label">
+              <div class="info-icon">
+                ?
+                <span class="tooltip">Freight AU→USA (varies by season & port)</span>
+              </div>
+              <span class="label-text">Shipping (Australia to USA)</span>
+              <span class="label-detail">$3,500–$5,000 range</span>
+            </div>
+            <div class="cost-amount variable" id="shippingCost">$4,000</div>
+          </div>
+
+          <div class="cost-row">
+            <div class="cost-label">
+              <div class="info-icon">
+                ?
+                <span class="tooltip">US federal import duty (flat 2.5% rate)</span>
+              </div>
+              <span class="label-text">US import duty (2.5%)</span>
+            </div>
+            <div class="cost-amount variable" id="dutyCost">$625</div>
+          </div>
+
+          <div class="cost-row">
+            <div class="cost-label">
+              <div class="info-icon">
+                ?
+                <span class="tooltip">Customs broker clearance at port of entry</span>
+              </div>
+              <span class="label-text">US customs broker</span>
+            </div>
+            <div class="cost-amount fixed">$300</div>
+          </div>
+
+          <div class="cost-row">
+            <div class="cost-label">
+              <div class="info-icon">
+                ?
+                <span class="tooltip">Average state registration (varies by state)</span>
+              </div>
+              <span class="label-text">State registration</span>
+            </div>
+            <div class="cost-amount fixed">$200</div>
+          </div>
+
+          <!-- Total -->
+          <div class="cost-row total">
+            <div class="cost-label">
+              <span class="label-text">Total Landed Cost</span>
+            </div>
+            <div class="cost-amount" id="totalCost">$33,675</div>
+          </div>
+        </div>
+
+        <!-- Protection Message -->
+        <div class="escrow-message">
+          <span class="escrow-badge">Protected</span>
+          <p><strong>Your funds are held safely until you verify delivery and condition.</strong> You control when payment releases to the seller.</p>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+          <button class="btn btn-gold" id="downloadBtn" onclick="downloadEstimate()">Download Estimate</button>
+          <button class="btn btn-secondary" id="emailBtn" onclick="emailEstimate()">Email Estimate</button>
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="disclaimer">
+          <strong>This is an estimate.</strong> Actual costs may vary based on vehicle condition, shipping season, final destination state, and market conditions. Contact us for a personalized quote.
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOUNDER ========== -->
+<section class="founder">
+  <div class="wrap">
+    <p class="eyebrow">From the founder</p>
+    <h2>I started this because the distance shouldn't be the hard part</h2>
+    <p>I'm Garry — a Brisbane motor enthusiast who lives and breathes Australian cars. I built Koala Classics for collectors in the States who've found the Holden, Falcon, or Monaro they've always wanted, half a world away, and just need someone they can trust to handle the rest.</p>
+    <p>Because we're a focused, founder-led operation, every client deals with me directly and gets treated as the priority. That's the advantage of working with someone who actually cares about the car turning up right.</p>
+    <p class="sig">— Garry, Koala Classics</p>
+  </div>
+</section>
+
+<!-- ========== FAQ ========== -->
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Common Questions</p>
+      <h2>The things buyers ask first</h2>
+    </div>
+    <div class="faq-container">
+      <details><summary>How is my payment protected?</summary><p>Your funds are held by an independent service until you verify the vehicle's condition and documentation. You never wire directly to the seller. You stay in complete control of when payment releases.</p></details>
+      <details><summary>How do I know this is legitimate?</summary><p>We're a registered Australian business (ABN 29 820 791 391) with transparent processes. You stay in control the entire way. We provide references and work with established partners.</p></details>
+      <details><summary>Can I get the car inspected before I commit?</summary><p>Yes — and we recommend it. We coordinate an independent third-party inspection and you receive the full report before payment is released. You decide whether to proceed.</p></details>
+      <details><summary>What makes a car eligible to import?</summary><p>The U.S. 25-year rule exempts vehicles 25 years or older from federal safety (NHTSA) and emissions (EPA) standards. You complete the EPA 3520-1 and DOT HS-7 exemption forms at the port of entry — no physical modifications required under federal law. State registration rules vary, so always check your state.</p></details>
+      <details><summary>How long does the whole process take?</summary><p>It varies by vehicle availability, inspection, and shipping schedules — typically a few months from sourcing to delivery. Payment is released once the vehicle arrives and you verify its condition. We keep you updated at every stage.</p></details>
+      <details><summary>Do you guarantee import approval?</summary><p>No. We provide guidance and coordination, but the buyer is responsible for complying with federal and state import laws. Your payment protection ensures your funds are safe while we handle the logistics and paperwork.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ========== QUOTE FORM ========== -->
+<section class="quote" id="quote">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">No Obligation</p>
+      <h2>Tell us what you're chasing</h2>
+      <p>Send us the car you're after and we'll come back with suitable vehicles and a clear next step. No pressure. Your payment is fully protected — Koala Classics never touches your funds.</p>
+    </div>
+
+    <form name="quote" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="quoteForm" novalidate>
+      <input type="hidden" name="form-name" value="quote" />
+      <p class="hp"><label>Don't fill this out: <input name="bot-field" tabindex="-1" /></label></p>
+
+      <div class="field"><label for="fname">First name <span aria-label="required">*</span></label><input id="fname" name="first_name" type="text" required /></div>
+      <div class="field"><label for="lname">Last name <span aria-label="required">*</span></label><input id="lname" name="last_name" type="text" required /></div>
+      <div class="field"><label for="email">Email <span aria-label="required">*</span></label><input id="email" name="email" type="email" required /></div>
+      <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" /></div>
+      <div class="field"><label for="loc">Your location (US state)</label><input id="loc" name="location" type="text" /></div>
+      <div class="field"><label for="budget">Budget (USD)</label><input id="budget" name="budget" type="text" /></div>
+      <div class="field full"><label for="car">Vehicle of interest</label><input id="car" name="vehicle" type="text" placeholder="e.g. VL Commodore Turbo, AU Falcon XR8…" /></div>
+      <div class="field full"><label for="msg">Anything else</label><textarea id="msg" name="message"></textarea></div>
+
+      <label class="consent full">
+        <input type="checkbox" name="agree_terms" value="yes" required />
+        <span>I have read and agree to the
+          <a href="legal.html#terms" target="_blank" rel="noopener">Terms of Service</a>,
+          <a href="legal.html#privacy" target="_blank" rel="noopener">Privacy Policy</a>, and
+          <a href="legal.html#disclaimer" target="_blank" rel="noopener">Disclaimer</a>.
+          I understand Koala Classics does not handle vehicle purchase funds directly.</span>
+      </label>
+
+      <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+
+      <div class="form-foot">
+        <button type="submit" class="btn btn-gold">Send my request</button>
+        <small>No obligation. Your funds are protected — Koala Classics never handles vehicle purchase funds directly.</small>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer role="contentinfo">
+  <div class="wrap">
+    <div>
+      <div class="brand" style="font-family:'Roboto',sans-serif;color:var(--paper)">KOALA<span style="color:var(--gold)">·</span>CLASSICS</div>
+      <a href="mailto:Admin@koalaclassics.com">Admin@koalaclassics.com</a>
+    </div>
+    <div class="foot-legal">
+      Koala Classics is a registered business name of Garry J Ryan<br />
+      ABN: 29 820 791 391 · Brisbane, Australia<br />
+      <a href="#quote">Get a quote</a> ·
+      <a href="#faq">FAQ</a> ·
+      <a href="legal.html#disclaimer">Disclaimer</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  (function(){
+    var btn = document.getElementById('menubtn');
+    var links = document.getElementById('navlinks');
+    if(!btn || !links) return;
+
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      var isOpen = links.classList.contains('open');
+      links.classList.toggle('open');
+      btn.setAttribute('aria-expanded', !isOpen);
+    });
+
+    links.addEventListener('click', function(e){
+      if(e.target.tagName === 'A'){
+        links.classList.remove('open');
+        btn.setAttribute('aria-expanded', false);
+      }
+    });
+  })();
+
+  // Keep the 25-year eligibility line accurate (current year - 25)
+  (function(){
+    var now = new Date().getFullYear();
+    var yearEl = document.getElementById('eligYear');
+    var modelEl = document.getElementById('eligModelYear');
+    if(yearEl) yearEl.textContent = now;
+    if(modelEl) modelEl.textContent = now - 25;
+  })();
+
+  // Form submission handler for non-Netlify environments
+  (function(){
+    var form = document.getElementById('quoteForm');
+    var status = document.getElementById('formStatus');
+    if(!form || !status) return;
+
+    form.addEventListener('submit', function(e){
+      if(window.location.hostname !== 'localhost' &&
+         window.location.hostname !== '127.0.0.1'){
+        return;
+      }
+
+      e.preventDefault();
+      status.textContent = 'Thank you! Your request has been received. We\'ll be in touch soon.';
+      status.className = 'form-status success';
+      form.reset();
+      setTimeout(function(){
+        status.style.display = 'none';
+      }, 5000);
+    });
+  })();
+
+  // Cost Estimator State and Calculations
+  (function(){
+    const state = {
+      vehiclePrice: 25000,
+      selectedCategory: 'commodore'
+    };
+
+    const priceSlider = document.getElementById('priceSlider');
+    const priceInput = document.getElementById('priceInput');
+    const categoryButtons = document.querySelectorAll('.category-btn');
+    const exampleButtons = document.querySelectorAll('.example-btn');
+
+    if(!priceSlider) return;
+
+    priceSlider.addEventListener('input', (e) => {
+      state.vehiclePrice = parseInt(e.target.value);
+      priceInput.value = state.vehiclePrice;
+      updateCalculations();
+    });
+
+    priceInput.addEventListener('change', (e) => {
+      state.vehiclePrice = Math.max(5000, Math.min(100000, parseInt(e.target.value) || 25000));
+      priceInput.value = state.vehiclePrice;
+      priceSlider.value = state.vehiclePrice;
+      updateCalculations();
+    });
+
+    categoryButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        categoryButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        state.selectedCategory = btn.dataset.category;
+        const min = parseInt(btn.dataset.min);
+        const max = parseInt(btn.dataset.max);
+        state.vehiclePrice = Math.floor((min + max) / 2);
+        priceSlider.value = state.vehiclePrice;
+        priceInput.value = state.vehiclePrice;
+        updateCalculations();
+      });
+    });
+
+    exampleButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        state.vehiclePrice = parseInt(btn.dataset.price);
+        state.selectedCategory = btn.dataset.category;
+        priceSlider.value = state.vehiclePrice;
+        priceInput.value = state.vehiclePrice;
+        categoryButtons.forEach(b => {
+          b.classList.toggle('active', b.dataset.category === state.selectedCategory);
+        });
+        updateCalculations();
+      });
+    });
+
+    function updateCalculations() {
+      const price = state.vehiclePrice;
+      const sourcingFee = 2300;
+      const inspection = 400;
+      const customsBroker = 300;
+      const registration = 200;
+      const escrow = Math.max(270, Math.min(400, price * 0.01));
+      const shipping = 3500 + (price / 100000) * 1500;
+      const duty = price * 0.025;
+      const total = price + sourcingFee + inspection + escrow + shipping + duty + customsBroker + registration;
+
+      document.getElementById('vehiclePrice').textContent = formatCurrency(price);
+      document.getElementById('escrowCost').textContent = formatCurrency(escrow);
+      document.getElementById('escrowDetail').textContent = `1% of vehicle price (${formatCurrency(Math.min(price * 0.01, 400))} max)`;
+      document.getElementById('shippingCost').textContent = formatCurrency(shipping);
+      document.getElementById('dutyCost').textContent = formatCurrency(duty);
+      document.getElementById('totalCost').textContent = formatCurrency(total);
+
+      state.breakdown = {
+        vehiclePrice: price,
+        sourcingFee: sourcingFee,
+        inspection: inspection,
+        escrow: escrow,
+        shipping: shipping,
+        duty: duty,
+        customsBroker: customsBroker,
+        registration: registration,
+        total: total
+      };
+    }
+
+    function formatCurrency(amount) {
+      return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
+      }).format(amount);
+    }
+
+    window.downloadEstimate = function() {
+      const breakdown = state.breakdown;
+      const lines = [
+        'KOALA CLASSICS — IMPORT COST ESTIMATE',
+        '=====================================',
+        '',
+        'Vehicle Purchase Price:       ' + formatCurrency(breakdown.vehiclePrice),
+        'Sourcing & Coordination Fee:  ' + formatCurrency(breakdown.sourcingFee),
+        'Independent Inspection:       ' + formatCurrency(breakdown.inspection),
+        'Escrow Coordination:          ' + formatCurrency(breakdown.escrow),
+        'Shipping (AU → USA):          ' + formatCurrency(breakdown.shipping),
+        'US Import Duty (2.5%):        ' + formatCurrency(breakdown.duty),
+        'US Customs Broker:            ' + formatCurrency(breakdown.customsBroker),
+        'State Registration:           ' + formatCurrency(breakdown.registration),
+        '',
+        '————————————————————————————————————',
+        'TOTAL LANDED COST:            ' + formatCurrency(breakdown.total),
+        '————————————————————————————————————',
+        '',
+        'Generated: ' + new Date().toLocaleDateString(),
+        'This is an estimate. Actual costs may vary.',
+        '',
+        'Questions? Contact: Admin@koalaclassics.com'
+      ];
+
+      const text = lines.join('\n');
+      const blob = new Blob([text], { type: 'text/plain' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'koala-classics-estimate.txt';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      window.URL.revokeObjectURL(url);
+    };
+
+    window.emailEstimate = function() {
+      const breakdown = state.breakdown;
+      const subject = 'Koala Classics Import Cost Estimate';
+      const body = `
+Hello,
+
+Here's your estimated import cost breakdown for a ${formatCurrency(breakdown.vehiclePrice)} Australian classic car:
+
+Vehicle Purchase Price:       ${formatCurrency(breakdown.vehiclePrice)}
+Sourcing & Coordination Fee:  ${formatCurrency(breakdown.sourcingFee)}
+Independent Inspection:       ${formatCurrency(breakdown.inspection)}
+Escrow Coordination:          ${formatCurrency(breakdown.escrow)}
+Shipping (AU → USA):          ${formatCurrency(breakdown.shipping)}
+US Import Duty (2.5%):        ${formatCurrency(breakdown.duty)}
+US Customs Broker:            ${formatCurrency(breakdown.customsBroker)}
+State Registration:           ${formatCurrency(breakdown.registration)}
+
+TOTAL LANDED COST:            ${formatCurrency(breakdown.total)}
+
+This is an estimate. Actual costs may vary based on vehicle condition, shipping season, and destination state.
+
+Ready to move forward? Reply to this email or visit https://www.koalaclassics.com/#quote to get started.
+
+Best regards,
+Koala Classics
+Admin@koalaclassics.com
+      `.trim();
+
+      window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    };
+
+    updateCalculations();
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Page Not Found — Koala Classics</title>
+<style>
+  :root {
+    --ink: #14342B;
+    --ink-2: #0E2620;
+    --paper: #F3EEE3;
+    --gold: #C8922F;
+    --char: #1C1C18;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Roboto", system-ui, sans-serif;
+    background: var(--paper);
+    color: var(--char);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+  .container {
+    text-align: center;
+    padding: 40px 24px;
+    max-width: 600px;
+  }
+  h1 {
+    font-family: "Roboto", sans-serif;
+    font-size: clamp(3rem, 8vw, 5rem);
+    color: var(--ink);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  p {
+    font-size: 1.1rem;
+    color: #534e43;
+    margin-bottom: 30px;
+  }
+  a {
+    display: inline-block;
+    padding: 14px 34px;
+    background: var(--gold);
+    color: var(--ink-2);
+    text-decoration: none;
+    border-radius: 2px;
+    font-weight: 700;
+    transition: .15s;
+  }
+  a:hover {
+    background: #E2A93D;
+    transform: translateY(-1px);
+  }
+  .error-code {
+    font-family: "Roboto", sans-serif;
+    font-size: 4rem;
+    color: var(--gold);
+    margin-bottom: 10px;
+    letter-spacing: .2em;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="error-code">404</div>
+    <h1>Page Not Found</h1>
+    <p>We couldn't find the page you're looking for. The car might be out on the road — or the link might've taken a wrong turn.</p>
+    <a href="/">← Back Home</a>
+  </div>
+</body>
+</html>

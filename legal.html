@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  KOALA CLASSICS  —  legal.html (Production Ready)
+  ============================================================
+  Terms of Service, Privacy Policy, and Disclaimer in one page.
+
+  Linked from main site via:
+  /legal#terms | /legal#privacy | /legal#disclaimer
+
+  CUSTOMIZATION:
+  - Update "Effective:" dates before deploying
+  - Edit legal text to match your specific business terms
+  - Destination country references kept neutral for flexibility
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Legal — Koala Classics</title>
+<meta name="description" content="Koala Classics Terms of Service, Privacy Policy, and Disclaimer." />
+<meta name="robots" content="noindex" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --ink:#14342B;
+    --ink-2:#0E2620;
+    --paper:#F3EEE3;
+    --paper-2:#E8E0D0;
+    --gold:#C8922F;
+    --gold-bright:#E2A93D;
+    --char:#1C1C18;
+    --line:rgba(28,28,24,.14);
+    --maxw:860px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Roboto",system-ui,sans-serif;
+    color:var(--char);
+    background:var(--paper);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:#9a7320;text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  /* HEADER */
+  header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:var(--ink);
+    border-bottom:1px solid rgba(243,238,227,.12);
+  }
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height:68px;
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+  .brand{
+    font-family:"Roboto",sans-serif;
+    color:var(--paper);
+    font-size:1.35rem;
+    letter-spacing:.04em;
+  }
+  .brand span{color:var(--gold)}
+  .back{
+    color:var(--paper);
+    font-size:.84rem;
+    font-weight:500;
+    opacity:.85;
+  }
+  .back:hover{
+    opacity:1;
+    color:var(--gold-bright);
+    text-decoration:none;
+  }
+
+  /* TITLE BLOCK */
+  .legal-hero{
+    background:var(--ink-2);
+    color:var(--paper);
+    padding:54px 0 44px;
+  }
+  .legal-hero .eyebrow{
+    font-family:"Roboto",sans-serif;
+    font-size:.72rem;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:700;
+  }
+  .legal-hero h1{
+    font-family:"Roboto",sans-serif;
+    font-weight:400;
+    text-transform:uppercase;
+    font-size:clamp(2rem,5vw,3rem);
+    margin-top:12px;
+    color:var(--paper);
+    line-height:1;
+  }
+
+  /* JUMP NAV */
+  .jump{
+    position:sticky;
+    top:68px;
+    z-index:40;
+    background:var(--gold);
+  }
+  .jump .wrap{
+    display:flex;
+    gap:6px;
+    flex-wrap:wrap;
+    padding-top:12px;
+    padding-bottom:12px;
+    max-width:1120px;
+  }
+  .jump a{
+    font-family:"Roboto",sans-serif;
+    font-size:.74rem;
+    font-weight:700;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--ink-2);
+    padding:6px 12px;
+    border-radius:2px;
+  }
+  .jump a:hover{
+    background:var(--ink-2);
+    color:var(--gold);
+    text-decoration:none;
+  }
+
+  /* DOCUMENTS */
+  .doc{
+    padding:56px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .doc:last-of-type{border-bottom:0}
+  .doc h2{
+    font-family:"Roboto",sans-serif;
+    font-weight:400;
+    text-transform:uppercase;
+    font-size:clamp(1.6rem,3.4vw,2.2rem);
+    color:var(--ink);
+    line-height:1;
+    scroll-margin-top:120px;
+  }
+  .eff{
+    font-family:"Roboto",sans-serif;
+    font-size:.8rem;
+    color:#6b6557;
+    margin:10px 0 28px;
+  }
+  .doc h3{
+    font-size:1.05rem;
+    font-weight:700;
+    color:var(--ink);
+    margin:28px 0 8px;
+  }
+  .doc p{
+    margin:8px 0;
+    color:#3f3b32;
+  }
+  .doc ul{
+    margin:8px 0 8px 22px;
+    color:#3f3b32;
+  }
+  .doc li{margin:4px 0}
+  .doc .lead{font-size:1.02rem}
+
+  /* FOOTER */
+  footer{
+    background:var(--ink-2);
+    color:rgba(243,238,227,.7);
+    padding:42px 0;
+    font-size:.84rem;
+  }
+  footer .wrap{
+    max-width:1120px;
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    flex-wrap:wrap;
+  }
+  footer .brand{
+    font-size:1.05rem;
+    margin-bottom:8px;
+  }
+  footer a{color:rgba(243,238,227,.7)}
+  footer a:hover{color:var(--gold-bright)}
+  .foot-legal{
+    font-family:"Roboto",sans-serif;
+    font-size:.72rem;
+    letter-spacing:.06em;
+    line-height:1.9;
+  }
+
+  @media (max-width:780px){
+    .jump{top:68px}
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header role="banner">
+  <div class="nav">
+    <a href="index.html" class="brand">KOALA<span>·</span>CLASSICS</a>
+    <a href="index.html" class="back">&larr; Back to site</a>
+  </div>
+</header>
+
+<!-- TITLE BLOCK -->
+<div class="legal-hero">
+  <div class="wrap">
+    <p class="eyebrow">The Fine Print</p>
+    <h1>Legal</h1>
+  </div>
+</div>
+
+<!-- JUMP NAV -->
+<nav class="jump" role="navigation">
+  <div class="wrap">
+    <a href="#terms">Terms of Service</a>
+    <a href="#privacy">Privacy Policy</a>
+    <a href="#disclaimer">Disclaimer</a>
+  </div>
+</nav>
+
+<!-- ========== TERMS OF SERVICE ========== -->
+<article class="doc">
+  <div class="wrap">
+    <h2 id="terms">Terms of Service</h2>
+    <p class="eff">Effective: 13 June 2026</p>
+
+    <h3>1. About Us</h3>
+    <p>Koala Classics is a registered business name operated by Garry J Ryan (ABN 29 820 791 391), based in Queensland, Australia. You can contact us at: Admin@koalaclassics.com.</p>
+    <p>Koala Classics provides vehicle export facilitation services. We are not a vehicle dealer, broker, or reseller, and we do not take ownership or possession of vehicles unless expressly agreed in writing.</p>
+
+    <h3>2. Acceptance of Terms</h3>
+    <p>By accessing this website or using our services, you agree to be bound by these Terms of Service. If you do not agree, you must not use our services.</p>
+
+    <h3>3. Nature of Our Services</h3>
+    <p>Koala Classics provides:</p>
+    <ul>
+      <li>Vehicle sourcing assistance</li>
+      <li>Introductions between buyers and sellers</li>
+      <li>Coordination of independent escrow services to protect buyer funds</li>
+      <li>Coordination of inspections, transport, and export logistics from Australia</li>
+      <li>General guidance on export from Australia and import requirements in the destination country</li>
+    </ul>
+    <p>Koala Classics does not:</p>
+    <ul>
+      <li>Buy or sell vehicles</li>
+      <li>Act as an agent for any party unless expressly agreed in writing</li>
+      <li>Hold, receive, or process buyer purchase funds (this is done by independent escrow)</li>
+      <li>Guarantee any transaction outcome</li>
+    </ul>
+
+    <h3>4. Escrow-Protected Payment Process</h3>
+    <p>Koala Classics does not receive, hold, or process vehicle purchase payments. All vehicle purchase payments are made via an independent escrow service that we help coordinate. The escrow service holds buyer funds safely until the buyer verifies receipt and condition of the vehicle, then releases payment to the seller. This protects both the buyer and seller.</p>
+
+    <h3>5. Buyer Responsibility</h3>
+    <p>Buyers are solely responsible for:</p>
+    <ul>
+      <li>Verifying the identity and legitimacy of the seller</li>
+      <li>Confirming the condition, authenticity, and suitability of the vehicle</li>
+      <li>Ensuring compliance with import laws in their destination country</li>
+      <li>Obtaining independent inspections where required</li>
+    </ul>
+    <p>Koala Classics may assist with coordination but does not assume responsibility for these matters.</p>
+
+    <h3>6. Third-Party Services</h3>
+    <p>Koala Classics may assist in coordinating third-party services, including:</p>
+    <ul>
+      <li>Independent escrow services (to hold and manage buyer funds)</li>
+      <li>Vehicle inspectors</li>
+      <li>Transport providers and freight forwarders</li>
+      <li>Customs brokers and compliance providers</li>
+    </ul>
+    <p>These providers operate independently and are engaged at the buyer's direction. Koala Classics is not responsible for the acts, omissions, delays, or performance of third-party providers, including escrow services. Escrow providers maintain their own terms and privacy policies.</p>
+
+    <h3>7. Fees and Payment</h3>
+    <p>Service fees will be outlined prior to engagement. Unless otherwise agreed in writing:</p>
+    <ul>
+      <li>Fees are payable as specified in your invoice or agreement</li>
+      <li>Third-party costs are separate and payable directly to those providers</li>
+      <li>Quotes are estimates only and may vary</li>
+    </ul>
+
+    <h3>8. Cancellations and Refunds</h3>
+    <p>Refunds are handled as follows:</p>
+    <ul>
+      <li>Prior to service commencement: full or partial refund may be provided at our discretion</li>
+      <li>After work has commenced: fees may be partially refundable based on work completed</li>
+      <li>After substantial completion: fees are non-refundable</li>
+    </ul>
+    <p>Nothing in this clause limits your rights under applicable consumer law.</p>
+
+    <h3>9. No Guarantees or Warranties</h3>
+    <p>To the maximum extent permitted by law, Koala Classics does not guarantee vehicle condition, quality, or authenticity; the accuracy or conduct of sellers; shipping timelines or logistics outcomes; or import approval or eligibility in any country. All information provided is general in nature and should not be relied upon as a substitute for independent advice.</p>
+
+    <h3>10. Limitation of Liability</h3>
+    <p>To the maximum extent permitted by law, Koala Classics is not liable for loss arising from transactions between buyers and sellers, loss caused by third-party providers, or indirect or consequential losses. Where liability cannot be excluded, it is limited to the amount paid for our services, to the extent permitted by law.</p>
+
+    <h3>11. Australian Consumer Law</h3>
+    <p>Nothing in these Terms excludes, restricts, or modifies any rights or remedies you may have under the Australian Consumer Law. Where required, services will be provided with due care and skill.</p>
+
+    <h3>12. Website Information</h3>
+    <p>Information on this website is provided for general guidance only and may change without notice. We do not warrant the accuracy, completeness, or reliability of website content.</p>
+
+    <h3>13. Privacy</h3>
+    <p>We handle personal information in accordance with our Privacy Policy.</p>
+
+    <h3>14. Governing Law</h3>
+    <p>These Terms are governed by the laws of Queensland, Australia. Any disputes will be subject to the jurisdiction of the courts of Queensland.</p>
+
+    <h3>15. Changes to Terms</h3>
+    <p>We may update these Terms from time to time. Updated Terms will take effect upon publication on our website.</p>
+  </div>
+</article>
+
+<!-- ========== PRIVACY POLICY ========== -->
+<article class="doc">
+  <div class="wrap">
+    <h2 id="privacy">Privacy Policy</h2>
+    <p class="eff">Effective: 13 June 2026</p>
+
+    <h3>1. Who We Are</h3>
+    <p>Koala Classics is a registered business name operated by Garry J Ryan (ABN 29 820 791 391), based in Queensland, Australia. You can contact us at: Admin@koalaclassics.com.</p>
+
+    <h3>2. What Information We Collect</h3>
+    <p>We may collect personal information including your full name, email address, phone number, location (country/state), and vehicle preferences and enquiry details. We may also collect website usage data (e.g. IP address, browser type, pages visited).</p>
+
+    <h3>3. How We Collect Information</h3>
+    <p>We collect personal information when you submit a form on our website, contact us via email, communicate with us directly, or interact with our website.</p>
+
+    <h3>4. Why We Collect Your Information</h3>
+    <p>We collect and use your information to respond to enquiries, provide our services, connect you with relevant third-party providers (e.g. inspectors, transport services), improve our website and services, and communicate updates or important information. We will not use your information for unrelated purposes without your consent.</p>
+
+    <h3>5. Disclosure of Information</h3>
+    <p>We may share your information with third parties where necessary to provide our services, including:</p>
+    <ul>
+      <li>Independent escrow service providers (to process your payment)</li>
+      <li>Vehicle inspectors and service providers</li>
+      <li>Transport providers and freight forwarders</li>
+      <li>Customs brokers and compliance providers</li>
+    </ul>
+    <p>We do not sell your personal information. All third parties are responsible for handling your information in accordance with their own privacy policies. Escrow providers maintain their own privacy practices separate from Koala Classics.</p>
+
+    <h3>6. Overseas Disclosure</h3>
+    <p>As we deal with international customers and services, your information may be disclosed to parties located outside Australia. By using our services, you acknowledge and agree to this.</p>
+
+    <h3>7. Data Security</h3>
+    <p>We take reasonable steps to protect your personal information from misuse, interference, loss, and unauthorised access, modification, or disclosure. However, no system is completely secure, and we cannot guarantee absolute security.</p>
+
+    <h3>8. Access and Correction</h3>
+    <p>You may request access to the personal information we hold about you and request corrections if it is inaccurate. To do so, contact us at: Admin@koalaclassics.com.</p>
+
+    <h3>9. Cookies and Website Tracking</h3>
+    <p>Our website may use cookies and similar technologies to improve user experience and analyse website traffic. You can disable cookies through your browser settings.</p>
+
+    <h3>10. Retention of Information</h3>
+    <p>We retain personal information only for as long as necessary to provide our services and comply with legal obligations.</p>
+
+    <h3>11. Complaints</h3>
+    <p>If you believe your privacy has been breached, you may contact us at Admin@koalaclassics.com. We will respond within a reasonable timeframe. If you are not satisfied, you may lodge a complaint with the Office of the Australian Information Commissioner (OAIC).</p>
+
+    <h3>12. Changes to This Policy</h3>
+    <p>We may update this Privacy Policy from time to time. Updates will be published on our website and take effect upon publication.</p>
+  </div>
+</article>
+
+<!-- ========== DISCLAIMER ========== -->
+<article class="doc">
+  <div class="wrap">
+    <h2 id="disclaimer">Disclaimer</h2>
+    <p class="eff">Effective: 13 June 2026</p>
+
+    <h3>1. General Information Only</h3>
+    <p>All information provided on this website is for general informational purposes only. While we aim to provide accurate and up-to-date information, Koala Classics makes no representations or warranties regarding the accuracy, completeness, or reliability of any content.</p>
+
+    <h3>2. Nature of Services</h3>
+    <p>Koala Classics is a vehicle export facilitation service operated by Garry J Ryan (ABN 29 820 791 391). We assist with sourcing vehicles, connecting buyers and sellers, and coordinating inspections, transport, and export logistics.</p>
+    <p>Koala Classics does not buy, sell, or own vehicles; act as a licensed dealer; act as an agent for any party unless expressly agreed; or guarantee any transaction outcome.</p>
+
+    <h3>3. Escrow-Protected Payments</h3>
+    <p>Koala Classics does not receive, hold, or process vehicle purchase funds. All buyer payments are processed through an independent escrow service that we coordinate. Escrow holds buyer funds safely and releases payment to the seller only after the buyer verifies the vehicle. This arrangement protects both parties and ensures Koala Classics never handles your purchase money.</p>
+
+    <h3>4. No Guarantees</h3>
+    <p>Koala Classics does not guarantee vehicle condition, quality, or authenticity; the accuracy or conduct of sellers; inspection outcomes; shipping timelines; or import approval or eligibility in any country. Buyers must conduct their own due diligence before proceeding with any transaction.</p>
+
+    <h3>5. Third-Party Services</h3>
+    <p>We may refer or assist in coordinating third-party services, including vehicle inspectors, transport providers, and freight and shipping companies. These providers operate independently and are not under our control. Koala Classics is not responsible for their services, performance, or outcomes.</p>
+
+    <h3>6. International Transactions</h3>
+    <p>Vehicle purchases and exports involve international laws, regulations, and risks. Koala Classics provides general guidance only and does not guarantee compliance with import requirements in any destination country. Buyers are responsible for ensuring compliance with all applicable laws.</p>
+
+    <h3>7. Limitation of Liability</h3>
+    <p>To the maximum extent permitted by law, Koala Classics is not liable for any loss arising from transactions between buyers and sellers, any loss resulting from third-party services, or any indirect or consequential loss. Nothing in this disclaimer excludes rights under the Australian Consumer Law.</p>
+
+    <h3>8. No Professional Advice</h3>
+    <p>Information provided by Koala Classics does not constitute legal, financial, or mechanical advice. You should seek independent professional advice where appropriate.</p>
+
+    <h3>9. Use at Your Own Risk</h3>
+    <p>Use of this website and our services is at your own risk.</p>
+
+    <h3>10. Contact</h3>
+    <p>If you have any questions about this Disclaimer, you can contact us at Admin@koalaclassics.com.</p>
+  </div>
+</article>
+
+<!-- FOOTER -->
+<footer role="contentinfo">
+  <div class="wrap">
+    <div>
+      <div class="brand" style="font-family:'Roboto',sans-serif;color:var(--paper)">KOALA<span style="color:var(--gold)">·</span>CLASSICS</div>
+      <a href="mailto:Admin@koalaclassics.com">Admin@koalaclassics.com</a>
+    </div>
+    <div class="foot-legal">
+      Koala Classics is a registered business name of Garry J Ryan<br />
+      ABN: 29 820 791 391 · Brisbane, Australia<br />
+      <a href="index.html">Home</a> · <a href="#terms">Terms</a> · <a href="#privacy">Privacy</a> · <a href="#disclaimer">Disclaimer</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
