@@ -41,6 +41,7 @@
     --ink-2:#0E2620;
     --paper:#F3EEE3;
     --paper-2:#E8E0D0;
+    --paper-3:#F9F7F3;
     --gold:#B8860B;
     --gold-bright:#D4AF37;
     --text-light:#FFFFFF;
@@ -49,6 +50,10 @@
     --char:#1C1C18;
     --line:rgba(28,28,24,.14);
     --maxw:1120px;
+    --space-sm:16px;
+    --space-md:24px;
+    --space-lg:40px;
+    --space-xl:64px;
   }
 
   *{box-sizing:border-box;margin:0;padding:0}
@@ -65,7 +70,7 @@
   .wrap{
     max-width:var(--maxw);
     margin:0 auto;
-    padding:0 24px;
+    padding:0 clamp(16px, 4vw, 32px);
     width:100%;
     box-sizing:border-box;
   }
@@ -91,17 +96,18 @@
     font-weight:400;
     line-height:1.15;
     letter-spacing:.01em;
+    margin-bottom:20px;
   }
   h3{
     font-size:clamp(1.1rem,3vw,1.5rem);
     font-weight:500;
     line-height:1.2;
     letter-spacing:.005em;
+    margin-bottom:16px;
   }
   h1,h2,h3{
     font-family:"Roboto",sans-serif;
     text-transform:uppercase;
-    margin-bottom:0;
   }
 
   /* ========== HEADER ========== */
@@ -119,7 +125,7 @@
     height:68px;
     max-width:var(--maxw);
     margin:0 auto;
-    padding:0 24px;
+    padding:0 clamp(16px, 4vw, 32px);
     width:100%;
     box-sizing:border-box;
   }
@@ -230,8 +236,8 @@
   }
   .hero-cta{
     display:flex;
-    gap:14px;
-    margin-top:34px;
+    gap:20px;
+    margin-top:32px;
     margin-left:auto;
     margin-right:auto;
     flex-wrap:wrap;
@@ -358,7 +364,7 @@
 
   /* ========== GENERIC SECTION ========== */
   section{
-    padding:clamp(32px,8vw,64px) 0;
+    padding:clamp(48px, 10vw, 80px) 0;
   }
   .sec-head{
     max-width:70ch;
@@ -507,13 +513,14 @@
 
   /* ========== COST ESTIMATOR SECTION ========== */
   .estimator-sec{
-    background:var(--paper-2);
+    background:linear-gradient(180deg, rgba(232,224,208,.5) 0%, rgba(232,224,208,.3) 100%), var(--paper-3);
   }
   .estimator-wrap{
-    display:grid;
-    grid-template-columns:1.1fr 1fr;
-    gap:clamp(32px,5vw,56px);
+    display:flex;
+    flex-direction:column;
+    gap:clamp(28px,4vw,40px);
     width:100%;
+    max-width:680px;
     margin:0 auto;
   }
 
@@ -704,6 +711,7 @@
   .breakdown-card{
     background:var(--paper);
     border:1px solid var(--line);
+    border-left:3px solid var(--gold);
     border-radius:6px;
     padding:clamp(20px,4vw,32px);
   }
@@ -968,7 +976,7 @@
   form{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:18px;
+    gap:32px;
     max-width:760px;
     margin:0 auto;
     width:100%;
@@ -978,7 +986,7 @@
   .field{
     display:flex;
     flex-direction:column;
-    gap:8px;
+    gap:10px;
   }
   .field.full{grid-column:1/-1}
   label{
@@ -987,6 +995,7 @@
     letter-spacing:.08em;
     text-transform:uppercase;
     color:rgba(255,255,255,.7);
+    margin-bottom:8px;
   }
   input,textarea{
     background:rgba(243,238,227,.06);
@@ -1074,13 +1083,13 @@
   footer .wrap{
     display:flex;
     justify-content:space-between;
-    gap:24px;
+    gap:clamp(24px, 4vw, 48px);
     flex-wrap:wrap;
     max-width:var(--maxw);
     margin:0 auto;
     width:100%;
     box-sizing:border-box;
-    padding:0 24px;
+    padding:0 clamp(16px, 4vw, 32px);
   }
   footer .brand{
     font-size:1.1rem;
@@ -1095,12 +1104,6 @@
   }
 
   /* ========== RESPONSIVE ========== */
-  @media (max-width:1020px){
-    .estimator-wrap{
-      grid-template-columns:1fr;
-      gap:clamp(32px,6vw,48px);
-    }
-  }
   @media (max-width:900px){
     .action-buttons{
       grid-template-columns:1fr;
@@ -1120,7 +1123,7 @@
       background:var(--ink);
       flex-direction:column;
       gap:0;
-      padding:8px 24px 20px;
+      padding:8px clamp(16px, 4vw, 24px) 20px;
       border-bottom:1px solid rgba(243,238,227,.12);
     }
     .nav-links.open a{
@@ -1130,25 +1133,14 @@
     }
     .menu-btn{display:block}
     form{grid-template-columns:1fr}
-    section{padding:clamp(32px,6vw,48px) 0}
     .hero{padding:clamp(40px,8vw,56px) 0 clamp(40px,10vw,64px)}
+    .eligible .wrap{padding:clamp(24px, 4vw, 32px)}
+  }
+  @media (max-width:768px){
     .hero:before,.hero:after{display:none}
-    .estimator-wrap{
-      gap:32px;
-      padding:clamp(32px,6vw,48px) 0;
-    }
-    .wrap{padding:0 20px}
-    .nav{padding:0 20px}
-    footer .wrap{padding:0 20px}
-    .eligible .wrap{padding:20px}
-    .founder .wrap{padding:0 20px}
   }
   @media (max-width:640px){
-    .wrap{padding:0 16px}
-    .nav{padding:0 16px}
-    footer .wrap{padding:0 16px}
-    .eligible .wrap{padding:16px}
-    .founder .wrap{padding:0 16px}
+    form{gap:24px}
   }
   @media (prefers-reduced-motion:reduce){
     *{scroll-behavior:auto;transition:none!important}
