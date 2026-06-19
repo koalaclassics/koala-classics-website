@@ -25,6 +25,7 @@
     --char:#1C1C18;
     --line:rgba(28,28,24,.14);
     --maxw:1120px;
+    --touch-target:48px;
   }
 
   *{box-sizing:border-box;margin:0;padding:0}
@@ -33,10 +34,11 @@
     font-family:"Roboto",system-ui,sans-serif;
     color:var(--char);
     background:var(--paper);
-    line-height:1.6;
+    line-height:1.65;
     -webkit-font-smoothing:antialiased;
+    -webkit-text-size-adjust:100%;
     font-weight:400;
-    font-size:1rem;
+    font-size:clamp(0.95rem, 1vw, 1rem);
   }
   .wrap{
     max-width:var(--maxw);
@@ -97,14 +99,18 @@
   .nav-cta{
     background:var(--gold);
     color:var(--ink-2)!important;
-    padding:9px 18px;
+    padding:clamp(8px, 2vw, 12px) clamp(16px, 4vw, 24px);
+    min-height:var(--touch-target);
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
     border-radius:2px;
     font-weight:700;
     opacity:1!important;
   }
   .nav-cta:hover{background:var(--gold-bright)}
 
-  section{padding:clamp(48px, 10vw, 80px) 0}
+  section{padding:clamp(56px, 12vw, 96px) 0}
 
   .hero{
     background:linear-gradient(135deg,rgba(20,52,43,.9) 0%,rgba(14,38,30,.85) 100%);
@@ -126,14 +132,14 @@
   .steps{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:20px;
+    gap:clamp(16px, 3vw, 24px);
     margin:0 auto;
   }
   .step{
     background:var(--paper);
     border:1px solid var(--line);
     border-left:3px solid var(--gold);
-    padding:30px 26px;
+    padding:clamp(24px, 5vw, 32px);
     border-radius:4px;
   }
   .step .num{
@@ -239,9 +245,99 @@
   }
   footer a:hover{color:var(--gold-bright)}
 
-  @media (max-width:640px){
-    .table-header, .table-row{grid-template-columns:1fr}
+  @media (max-width:900px){
+    section{padding:clamp(48px, 10vw, 80px) 0}
+  }
+
+  @media (max-width:768px){
+    h1{font-size:clamp(1.75rem, 6vw, 3rem)}
+    h2{font-size:clamp(1.25rem, 5vw, 2rem)}
+    h3{font-size:clamp(1rem, 4vw, 1.25rem)}
+
     .nav-links{display:none}
+    .nav{height:64px}
+
+    .hero{padding:clamp(48px, 10vw, 64px) 0}
+    .hero h1{margin-bottom:16px}
+    .hero p{font-size:clamp(0.95rem, 3vw, 1.05rem)}
+
+    .sec-head{margin-bottom:clamp(32px, 8vw, 48px)}
+
+    .steps{gap:clamp(16px, 3vw, 20px)}
+    .step{padding:clamp(20px, 4vw, 28px)}
+
+    .table-header, .table-row{grid-template-columns:1fr;padding:clamp(16px, 4vw, 20px)}
+
+    .timeline{margin:0}
+    .timeline-item{padding:clamp(20px, 4vw, 24px);margin-bottom:clamp(16px, 3vw, 20px)}
+
+    .faq-container{max-width:100%}
+    details{padding:clamp(16px, 4vw, 20px) 0}
+    summary{font-size:clamp(1rem, 3vw, 1.05rem)}
+    details p{font-size:clamp(0.9rem, 2.5vw, 1rem);line-height:1.6}
+  }
+
+  @media (max-width:640px){
+    .wrap{padding:0 clamp(16px, 4vw, 20px)}
+
+    h1{font-size:clamp(1.5rem, 5vw, 2.5rem)}
+    h2{font-size:clamp(1.15rem, 4vw, 1.75rem)}
+    h3{font-size:clamp(1rem, 3vw, 1.15rem)}
+
+    .hero{padding:clamp(40px, 8vw, 48px) 0}
+    .hero h1{margin-bottom:12px;font-size:clamp(1.35rem, 5vw, 2.2rem)}
+
+    .sec-head{margin-bottom:clamp(28px, 6vw, 40px)}
+
+    .steps{gap:clamp(12px, 3vw, 16px)}
+    .step{padding:clamp(18px, 4vw, 24px)}
+    .step h3{margin-bottom:12px;font-size:clamp(0.95rem, 3vw, 1.1rem)}
+    .step p{font-size:clamp(0.9rem, 2.5vw, 0.95rem)}
+
+    .table-header{
+      grid-template-columns:1fr;
+      padding:clamp(12px, 3vw, 16px);
+      font-size:clamp(0.8rem, 2vw, 0.9rem);
+    }
+    .table-row{
+      grid-template-columns:1fr;
+      padding:clamp(12px, 3vw, 16px);
+      font-size:clamp(0.9rem, 2.5vw, 0.95rem);
+    }
+
+    .timeline{margin:0}
+    .timeline-item{padding:clamp(16px, 3vw, 20px);margin-bottom:clamp(12px, 3vw, 16px)}
+    .timeline-item strong{margin-bottom:8px;font-size:clamp(0.95rem, 3vw, 1rem)}
+    .timeline-item p{font-size:clamp(0.85rem, 2.5vw, 0.95rem)}
+
+    .faq-container{max-width:100%}
+    details{padding:clamp(14px, 3vw, 18px) 0}
+    summary{font-size:clamp(0.95rem, 3vw, 1rem)}
+    summary:after{font-size:1.1rem}
+    details p{font-size:clamp(0.85rem, 2.5vw, 0.95rem)}
+
+    section{padding:clamp(40px, 8vw, 56px) 0}
+  }
+
+  @media (max-width:480px){
+    h1{font-size:clamp(1.35rem, 4.5vw, 2rem)}
+    h2{font-size:clamp(1.1rem, 3.5vw, 1.5rem)}
+
+    .hero{padding:clamp(36px, 7vw, 44px) 0}
+    .hero h1{font-size:clamp(1.25rem, 4vw, 1.8rem)}
+
+    .sec-head{margin-bottom:clamp(24px, 5vw, 32px)}
+
+    .steps{gap:clamp(10px, 2vw, 14px)}
+    .step{padding:clamp(16px, 3vw, 20px)}
+
+    .timeline-item{padding:clamp(14px, 3vw, 18px);margin-bottom:clamp(10px, 2vw, 14px)}
+
+    section{padding:clamp(36px, 7vw, 48px) 0}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    *{scroll-behavior:auto;transition:none!important}
   }
 </style>
 </head>
