@@ -1330,11 +1330,12 @@
             <div class="cost-label">
               <div class="info-icon">
                 ?
-                <span class="tooltip">Professional sourcing, market research & coordination</span>
+                <span class="tooltip">Koala Classics total fee: $1,000 deposit (upfront, 6 months sourcing) + $2,000 on shipment (export coordination, escrow management)</span>
               </div>
-              <span class="label-text">Koala Classics sourcing fee</span>
+              <span class="label-text">Koala Classics fees</span>
+              <span class="label-detail">$1,000 + $2,000 on shipment</span>
             </div>
-            <div class="cost-amount fixed">$2,300</div>
+            <div class="cost-amount fixed">$3,000</div>
           </div>
 
           <div class="cost-row">
@@ -1667,7 +1668,7 @@
 
     function updateCalculations() {
       const price = state.vehiclePrice;
-      const sourcingFee = 2300;
+      const sourcingFee = 3000;
       const inspection = 400;
       const customsBroker = 300;
       const registration = 200;
@@ -1724,7 +1725,7 @@
         '=====================================',
         '',
         'Vehicle Purchase Price:       ' + formatCurrency(breakdown.vehiclePrice),
-        'Sourcing & Coordination Fee:  ' + formatCurrency(breakdown.sourcingFee),
+        'Koala Classics Fees:          ' + formatCurrency(breakdown.sourcingFee),
         'Independent Inspection:       ' + formatCurrency(breakdown.inspection),
         'Escrow (independent provider):  ' + formatCurrency(breakdown.escrow),
         'Shipping (AU → USA):          ' + formatCurrency(breakdown.shipping),
@@ -1764,7 +1765,7 @@ Hello,
 Here's your estimated import cost breakdown for a ${formatCurrency(breakdown.vehiclePrice)} Australian classic car:
 
 Vehicle Purchase Price:       ${formatCurrency(breakdown.vehiclePrice)}
-Sourcing & Coordination Fee:  ${formatCurrency(breakdown.sourcingFee)}
+Koala Classics Fees:          ${formatCurrency(breakdown.sourcingFee)}
 Independent Inspection:       ${formatCurrency(breakdown.inspection)}
 Escrow (independent provider):  ${formatCurrency(breakdown.escrow)}
 Shipping (AU → USA):          ${formatCurrency(breakdown.shipping)}
