@@ -184,7 +184,7 @@
   .hero{
     background:
       linear-gradient(180deg, rgba(14,38,30,0.82) 0%, rgba(14,38,30,0.70) 55%, rgba(14,38,30,0.90) 100%),
-      url('Cargoship.jpg') center/cover no-repeat;
+      url('car-holden-white.jpg') center/cover no-repeat;
     color:var(--paper);
     padding:clamp(48px,10vw,84px) 0 clamp(48px,12vw,96px);
     position:relative;
@@ -303,28 +303,6 @@
     flex-shrink:0;
   }
 
-  .hero-car{
-    margin-top:52px;
-    max-width:800px;
-    margin:52px auto 0;
-    position:relative;
-    z-index:1;
-  }
-  .hero-car img{
-    width:100%;
-    display:block;
-    border-radius:4px;
-    box-shadow:0 24px 64px rgba(0,0,0,.55), 0 0 0 1px rgba(198,163,87,.35);
-  }
-  .hero-car-caption{
-    text-align:center;
-    margin-top:12px;
-    font-family:"Roboto",sans-serif;
-    font-size:.8rem;
-    letter-spacing:.1em;
-    text-transform:uppercase;
-    color:rgba(255,255,255,.5);
-  }
 
   /* ========== ELIGIBILITY STRIP ========== */
   .eligible{
@@ -1131,6 +1109,14 @@
       width:100%;
       border-bottom:1px solid rgba(243,238,227,.08);
     }
+    .nav-links.open .nav-cta{
+      padding:14px 16px;
+      width:100%;
+      border:0;
+      border-bottom:1px solid rgba(243,238,227,.08);
+      text-align:center;
+      margin-top:4px;
+    }
     .menu-btn{display:block}
     form{grid-template-columns:1fr}
     .hero{padding:clamp(40px,8vw,56px) 0 clamp(40px,10vw,64px)}
@@ -1141,6 +1127,15 @@
   }
   @media (max-width:640px){
     form{gap:24px}
+    .cost-row{
+      flex-direction:column;
+      align-items:flex-start;
+      gap:8px;
+    }
+    .cost-amount{
+      min-width:auto;
+      text-align:left;
+    }
   }
   @media (prefers-reduced-motion:reduce){
     *{scroll-behavior:auto;transition:none!important}
@@ -1180,10 +1175,6 @@
       <span>ABN 29&nbsp;820&nbsp;791&nbsp;391</span>
       <span>Fully protected transactions</span>
     </div>
-    <div class="hero-car">
-      <img src="AUSCAR1.jpg" alt="Australian classic car ready for export" loading="eager" />
-      <p class="hero-car-caption">Australian Classics · Export Ready</p>
-    </div>
   </div>
 </section>
 
@@ -1214,6 +1205,15 @@
     </div>
   </div>
 </section>
+
+<!-- ========== PROCESS SHOWCASE ========== -->
+<div style="margin-top:80px;background:linear-gradient(135deg,rgba(20,52,43,.75) 0%,rgba(14,38,30,.85) 100%),url('car-ford-edit.jpg') center/cover no-repeat;min-height:500px;display:flex;align-items:center;justify-content:center;padding:60px 20px">
+  <div style="max-width:600px;text-align:center;color:var(--paper)">
+    <p style="font-size:0.9rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;font-weight:600">Our Standard</p>
+    <h2 style="font-size:2.2rem;font-weight:400;line-height:1.15;margin-bottom:20px;color:var(--text-light)">Every car is inspected & documented</h2>
+    <p style="font-size:1.05rem;line-height:1.65;color:rgba(255,255,255,.85);max-width:520px;margin:0 auto">We source vehicles in pristine condition. Independent inspection reports and full documentation ensure you know exactly what you're buying before a single dollar leaves your account.</p>
+  </div>
+</div>
 
 <!-- ========== THE CARS ========== -->
 <section class="cars-sec" id="cars">
@@ -1256,6 +1256,13 @@
       </article>
     </div>
     <p class="cars-note">Chasing something specific? Tell us the car — sourcing rare and one-owner examples is what we do.</p>
+    <div style="margin-top:60px;max-width:800px;margin-left:auto;margin-right:auto;border-radius:8px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.15)">
+      <img src="car-hero-alt.jpg" alt="Featured: Classic Australian car eligible for export" style="width:100%;display:block;height:auto"/>
+      <div style="padding:24px;background:rgba(243,238,227,.5);border-top:3px solid var(--gold)">
+        <p style="color:var(--ink);font-weight:600;margin:0">Featured: Premium Australian classic eligible under the 25-year rule</p>
+        <p style="color:#534e43;font-size:0.9rem;margin:8px 0 0 0">This is the quality and condition of vehicles we source from across Australia</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1345,12 +1352,12 @@
             <div class="cost-label">
               <div class="info-icon">
                 ?
-                <span class="tooltip">Funds held safely until you verify vehicle condition</span>
+                <span class="tooltip">Held safely by an independent escrow provider — not by Koala Classics — and released to the seller only after you verify the vehicle. Paid directly to the escrow service.</span>
               </div>
-              <span class="label-text">Payment protection</span>
-              <span class="label-detail" id="escrowDetail">1% of vehicle price ($250–$400)</span>
+              <span class="label-text">Escrow fee</span>
+              <span class="label-detail" id="escrowDetail">Paid to independent escrow provider (~2.4%)</span>
             </div>
-            <div class="cost-amount variable" id="escrowCost">$250</div>
+            <div class="cost-amount variable" id="escrowCost">$600</div>
           </div>
 
           <div class="cost-row">
@@ -1362,7 +1369,19 @@
               <span class="label-text">Shipping (Australia to USA)</span>
               <span class="label-detail">$3,500–$5,000 range</span>
             </div>
-            <div class="cost-amount variable" id="shippingCost">$4,000</div>
+            <div class="cost-amount variable" id="shippingCost">$3,875</div>
+          </div>
+
+          <div class="cost-row">
+            <div class="cost-label">
+              <div class="info-icon">
+                ?
+                <span class="tooltip">Marine transit insurance protects the vehicle's full value while at sea. Carrier liability alone does not. Arranged via the freight forwarder.</span>
+              </div>
+              <span class="label-text">Marine insurance</span>
+              <span class="label-detail">~1.5% of vehicle value</span>
+            </div>
+            <div class="cost-amount variable" id="insuranceCost">$375</div>
           </div>
 
           <div class="cost-row">
@@ -1447,7 +1466,7 @@
 
       <details><summary>What's included in your sourcing fee?</summary><p>Our $2,300 sourcing fee covers professional market research, vehicle sourcing from across Australia, communications with sellers, and coordination of the entire process up to export. We assist with finding the right car, facilitating introductions to sellers, arranging inspections, and managing export paperwork. This is the one fee you pay us — all other costs (vehicle price, inspection, shipping, duties, escrow) are separate.</p></details>
 
-      <details><summary>Can I negotiate the price directly with the seller?</summary><p>Yes. You negotiate directly with the Australian seller — we introduce you and facilitate the conversation, but you stay in complete control of pricing and terms. No hidden markups or middleman fees. You negotiate a fair price with the seller, then we help you proceed safely through our escrow-protected process.</p></details>
+      <details><summary>Can I negotiate the price directly with the seller?</summary><p>Yes. You negotiate directly with the Australian seller — we introduce you and facilitate the conversation, but you stay in complete control of pricing and terms. No hidden markups or middleman fees. You negotiate a fair price with the seller, then we help you proceed safely through an independent, escrow-protected process.</p></details>
 
       <details><summary>What happens after my car arrives in the USA?</summary><p>Once your car lands in the USA, you'll need to:<br>
       • Register it with your state's DMV<br>
@@ -1526,10 +1545,7 @@
       <a href="mailto:adminkoalaclassics@gmail.com">adminkoalaclassics@gmail.com</a>
     </div>
     <div class="foot-legal">
-      Koala Classics is a registered business name of Garry J Ryan<br />
-      ABN: 29 820 791 391 · Brisbane, Australia<br />
-      <a href="#quote">Get a quote</a> ·
-      <a href="#faq">FAQ</a> ·
+     <a href="#faq">FAQ</a> ·
       <a href="legal.html">Legal</a> ·
       <a href="legal.html#disclaimer">Disclaimer</a>
     </div>
@@ -1589,6 +1605,7 @@
     });
   })();
 
+
   // Cost Estimator State and Calculations
   (function(){
     const state = {
@@ -1619,15 +1636,26 @@
       const inspection = 400;
       const customsBroker = 300;
       const registration = 200;
-      const escrow = Math.max(270, Math.min(400, price * 0.01));
+      // Escrow fee — paid by the buyer directly to an independent escrow provider.
+      // Koala Classics never holds or coordinates these funds.
+      let escrow, escrowRateLabel;
+      if (price <= 50000) {
+        escrow = Math.max(130, price * 0.024);
+        escrowRateLabel = 'Paid to independent escrow provider (~2.4%)';
+      } else {
+        escrow = Math.max(1200, price * 0.019);
+        escrowRateLabel = 'Paid to independent escrow provider (~1.9%)';
+      }
       const shipping = 3500 + (price / 100000) * 1500;
+      const insurance = price * 0.015;
       const duty = price * 0.025;
-      const total = price + sourcingFee + inspection + escrow + shipping + duty + customsBroker + registration;
+      const total = price + sourcingFee + inspection + escrow + shipping + insurance + duty + customsBroker + registration;
 
       document.getElementById('vehiclePrice').textContent = formatCurrency(price);
       document.getElementById('escrowCost').textContent = formatCurrency(escrow);
-      document.getElementById('escrowDetail').textContent = `1% of vehicle price (${formatCurrency(Math.min(price * 0.01, 400))} max)`;
+      document.getElementById('escrowDetail').textContent = escrowRateLabel;
       document.getElementById('shippingCost').textContent = formatCurrency(shipping);
+      document.getElementById('insuranceCost').textContent = formatCurrency(insurance);
       document.getElementById('dutyCost').textContent = formatCurrency(duty);
       document.getElementById('totalCost').textContent = formatCurrency(total);
 
@@ -1637,6 +1665,7 @@
         inspection: inspection,
         escrow: escrow,
         shipping: shipping,
+        insurance: insurance,
         duty: duty,
         customsBroker: customsBroker,
         registration: registration,
@@ -1662,8 +1691,9 @@
         'Vehicle Purchase Price:       ' + formatCurrency(breakdown.vehiclePrice),
         'Sourcing & Coordination Fee:  ' + formatCurrency(breakdown.sourcingFee),
         'Independent Inspection:       ' + formatCurrency(breakdown.inspection),
-        'Escrow Coordination:          ' + formatCurrency(breakdown.escrow),
+        'Escrow (independent provider):  ' + formatCurrency(breakdown.escrow),
         'Shipping (AU → USA):          ' + formatCurrency(breakdown.shipping),
+        'Marine insurance (~1.5%):     ' + formatCurrency(breakdown.insurance),
         'US Import Duty (2.5%):        ' + formatCurrency(breakdown.duty),
         'US Customs Broker:            ' + formatCurrency(breakdown.customsBroker),
         'State Registration:           ' + formatCurrency(breakdown.registration),
@@ -1701,8 +1731,9 @@ Here's your estimated import cost breakdown for a ${formatCurrency(breakdown.veh
 Vehicle Purchase Price:       ${formatCurrency(breakdown.vehiclePrice)}
 Sourcing & Coordination Fee:  ${formatCurrency(breakdown.sourcingFee)}
 Independent Inspection:       ${formatCurrency(breakdown.inspection)}
-Escrow Coordination:          ${formatCurrency(breakdown.escrow)}
+Escrow (independent provider):  ${formatCurrency(breakdown.escrow)}
 Shipping (AU → USA):          ${formatCurrency(breakdown.shipping)}
+Marine insurance (~1.5%):     ${formatCurrency(breakdown.insurance)}
 US Import Duty (2.5%):        ${formatCurrency(breakdown.duty)}
 US Customs Broker:            ${formatCurrency(breakdown.customsBroker)}
 State Registration:           ${formatCurrency(breakdown.registration)}
